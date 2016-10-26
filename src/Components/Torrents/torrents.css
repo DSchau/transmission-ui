@@ -1,0 +1,6 @@
+.transmission-torrents {
+  .even {
+    background-color: rgba(0, 0, 0, 0.075);
+    user-select: none;
+  }
+}

@@ -1,0 +1,21 @@
+.search {
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  position: relative;
+  input {
+    border: 0;
+    outline: none;
+    padding: 0.25rem;
+    width: 100%;
+    padding-left: 1.25rem;
+  }
+  svg {
+    font-size: 1.1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &.focused svg {
+    color: #569ce2;
+  }
+}

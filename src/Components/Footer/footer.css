@@ -1,0 +1,22 @@
+.transmission-footer {
+  height: 34px;
+  line-height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  background-color: #EEEEEE;
+  color: #212121;
+  border-top: 1px solid #BDBDBD;
+  .status {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: normal;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .spacer {
+    min-width: 34px;
+    min-height: 34px;
+  }
+}

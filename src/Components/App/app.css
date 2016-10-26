@@ -1,0 +1,24 @@
+html, body, .transmission {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.transmission {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.transmission-header, .transmission-footer {
+  flex: 0 0 auto;
+}
+
+.transmission-content {
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

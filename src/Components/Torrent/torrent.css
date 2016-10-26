@@ -1,0 +1,99 @@
+.transmission-torrent {
+  padding: 0 0.25rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  color: rgba(255, 255, 255, 0.925);
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: overlay;
+    z-index: 2;
+  }
+  &.complete {
+    background-color: #00e676;
+  }
+  &.error {
+    background-color: #ef5350;
+  }
+  &.downloading {
+    background-color: #29b6f6;
+  }
+  &.paused {
+    background-color: #bdbdbd;
+    color: #424242;
+    .error-message {
+      color: #616161;
+    }
+  }
+  .flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .bottom-border, .overlay, .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    mix-blend-mode: color-burn;
+  }
+  .details {
+    z-index: 3;
+    position: relative;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  .error-message {
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+  .overlay {
+    top: 0;
+  }
+  .progress {
+    background: linear-gradient(to top, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.10) 100%);
+    height: 100%;
+    width: 0;
+    z-index: 2;
+  }
+  .name {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: normal;
+  }
+  .file-icon {
+    padding-right: 0.5rem;
+    position: relative;
+  }
+  .file-extension {
+    position: absolute;
+    color: black;
+    font-size: 0.5rem;
+    top: 55%;
+    left: 7px;
+    transform: translateY(-50%);
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.even .transmission-torrent .overlay {
+  background-color: rgba(255, 255, 255, 0.125);
+  background-blend-mode: overlay;
+}

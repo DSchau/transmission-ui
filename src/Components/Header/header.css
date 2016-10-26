@@ -1,0 +1,21 @@
+.transmission-header {
+  header {
+    background-color: #37474F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 54px;
+    color: white;
+    border-bottom: 1px solid #263238;
+  }
+  header .large {
+    font-size: 32px;
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    .action-icon {
+      padding: 0 0.5rem;
+    }
+  }
+}

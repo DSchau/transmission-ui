@@ -1,0 +1,11 @@
+.action-icon {
+  svg {
+    opacity: 0.75;
+    cursor: pointer;
+    transition: all ease-in-out 150ms;
+  }
+  svg:hover {
+    opacity: 1;
+    transform: scale(1.175);
+  }
+}
