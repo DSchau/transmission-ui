@@ -13,8 +13,20 @@
     "transform-object-rest-spread"
   ],
   "env": {
-    "plugins": [
-      "transform-runtime"
-    ]
+    "test": {
+      "presets": [
+        "es2015"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-assign",
+        "transform-object-rest-spread"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-runtime"
+      ]
+    }
   }
 }

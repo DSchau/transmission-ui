@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const assign = require('object-assign');
 
@@ -45,8 +44,7 @@ module.exports = function(baseConfig, pkg) {
           warnings: false
         },
         mangle: true
-      }),
-      new ProgressBarPlugin()
+      })
     ]
   };
 
