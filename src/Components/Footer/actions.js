@@ -14,7 +14,7 @@ export function setSettings(settings) {
   };
 }
 
-const getDisplayMode = (mode) => {
+export const getDisplayMode = (mode) => {
   return mode === 'fullview' ? 'listview' : 'fullview';
 }
 

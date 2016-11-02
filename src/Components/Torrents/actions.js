@@ -1,10 +1,14 @@
 import { UPDATE_TORRENTS } from '../../Store/actions';
 
-export function updateTorrents(torrents) {
+export function updateTorrentAction(torrents) {
   return {
     type: UPDATE_TORRENTS,
     torrents
   };
+}
+
+export function updateTorrents(torrents) {
+  return torrents || [];
 }
 
 export const mapStateToProps = (state) => {
@@ -15,6 +19,6 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => ({
   setTorrents: (torrents) => {
-    dispatch(updateTorrents(torrents));
+    dispatch(updateTorrentAction(torrents));
   }
 });
