@@ -1,85 +1,77 @@
 import React, { Component, PropTypes } from 'react';
 import { List } from 'react-virtualized';
+import Dropzone from 'react-dropzone';
 import debounce from 'lodash.debounce';
 
 import Torrent from '../Torrent/';
 
 export default class Torrents extends Component {
   static defaultProps = {
-    list: []
+    list: [],
+    onTorrentSelect: () => {},
+    resizeDebounce: 25
   };
 
   static propTypes = {
-    list: PropTypes.array
+    list: PropTypes.array,
+    onTorrentSelect: PropTypes.func,
+    resizeDebounce: PropTypes.number
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      clientWidth: document.body.clientWidth,
-      list: props.list,
-      selected: []
+      clientWidth: document.body.clientWidth
     };
-
-    this.initListeners();
   }
 
-  componentWillReceiveProps(props) {
-    this.setState(props);
+  componentWillMount() {
+    this.resizeListener = debounce(this.resizeListener.bind(this), this.props.resizeDebounce);
+
+    addEventListener('resize', this.resizeListener);
   }
 
-  initListeners() {
-    window.addEventListener('resize', debounce(() => {
-      this.setState({
-        clientWidth: document.body.clientWidth
-      });
-    }), 50);
+  componentWillUnmount() {
+    removeEventListener('resize', this.resizeListener);
+  }
+
+  resizeListener() {
+    this.setState({
+      clientWidth: document.body.clientWidth
+    });
   }
 
   torrentRow({ key, style, index }) {
-    const torrent = this.state.list[index];
+    const torrent = this.props.list[index];
     const className = index % 2 === 0 ? 'even' : 'odd';
     return (
       <div
         className={className}
         key={key}
         style={style}
-        onClick={this.handleTorrentClick(torrent, index)}
+        onClick={() => this.props.onTorrentSelect(torrent, index)}
       >
         <Torrent {...torrent} />
       </div>
     );
   }
 
-  /*
-   * Dispatch torrent selected event
-   */
-  handleTorrentClick(torrent, index) {
-    return () => {
-      const selected = this.state.selected;
-      const selectedIndex = selected.indexOf(torrent);
-      if ( selectedIndex > -1 ) {
-        selected.splice(index, 1);
-      } else {
-        selected.push(torrent);
-      }
-      this.setState({
-        selected
-      });
-    };
-  }
-
   render() {
     const rowHeight = 50;
     return (
-      <List
-        width={this.state.clientWidth}
-        height={this.state.list.length*rowHeight}
-        rowCount={this.state.list.length}
-        rowHeight={rowHeight}
-        rowRenderer={this.torrentRow.bind(this)}
-      />
+      <Dropzone accept=".torrent" disableClick={true} style={{
+        width: 'auto',
+        height: 'auto'
+      }}>
+        <List
+          width={this.state.clientWidth}
+          height={this.props.list.length*rowHeight}
+          rowCount={this.props.list.length}
+          rowHeight={rowHeight}
+          rowRenderer={this.torrentRow.bind(this)}
+        />
+      </Dropzone>
     );
   }
 }

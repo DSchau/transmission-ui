@@ -11,10 +11,15 @@ import App from './Components/App/';
 injectTapEventPlugin();
 
 const rootEl = document.getElementById('transmission-web-ui');
-const store = createStore({
+const store = createStore(JSON.parse(localStorage.getItem('TRANSMISSION_UI')) || {
   mode: 'listview',
+  openTorrent: false,
   settings: false,
   torrents: []
+});
+
+store.subscribe(() => {
+  localStorage.setItem('TRANSMISSION_UI', JSON.stringify(store.getState()));
 });
 
 render(

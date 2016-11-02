@@ -13,7 +13,25 @@ export default function rootReducer(state = {}, action = {}) {
     case actions.UPDATE_TORRENTS:
       return Object.assign({}, state, {
         torrents: action.torrents
-      })
+      });
+    case actions.TOGGLE_TORRENT_SELECTION:
+      return Object.assign({}, state);
+    case actions.TOGGLE_OPEN_DIALOG:
+      return Object.assign({}, state, {
+        openTorrent: action.openTorrent
+      });
+    case actions.SEARCH_QUERY:
+      return Object.assign({}, state, {
+        search: Object.assign({}, state.search, {
+          query: action.query
+        })
+      });
+    case actions.SEARCH_FOCUS_CHANGE:
+      return Object.assign({}, state, {
+        search: Object.assign({}, state.search, {
+          focused: action.focused
+        })
+      });
     default:
       return state;
   }

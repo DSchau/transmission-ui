@@ -10,7 +10,7 @@
     "precompile": "npm run clean",
     "compile": "cross-env NODE_ENV=production webpack",
     "start": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --port 3000 --host 0.0.0.0 --hot --open --inline",
-    "test": "cross-env NODE_ENV=test ava \"src/**/*.test.js\" --verbose",
+    "test": "cross-env NODE_ENV=test ava \"src/**/*.test.js\" --source \"src/**/*.js\"--verbose",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [
@@ -31,6 +31,7 @@
     "react": "~15.3.2",
     "react-addons-shallow-compare": "~15.3.2",
     "react-dom": "~15.3.2",
+    "react-dropzone": "~3.7.2",
     "react-hot-loader": "~3.0.0-beta.5",
     "react-redux": "~4.4.5",
     "react-tap-event-plugin": "~1.0.0",

@@ -1,21 +1,25 @@
 .search {
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.9);
   position: relative;
   input {
     border: 0;
+    background-color: #263238;
+    color: #FAFAFA;
     outline: none;
-    padding: 0.25rem;
+    padding: 0.5rem;
     width: 100%;
-    padding-left: 1.25rem;
+    padding-left: 1.5rem;
+    font-family: inherit;
   }
   svg {
     font-size: 1.1rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    color: #BDBDBD !important;
   }
   &.focused svg {
-    color: #569ce2;
+    color: #29B6F6 !important;
   }
 }

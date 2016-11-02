@@ -1,4 +1,11 @@
-import { UPDATE_TORRENTS } from '../../Store/actions';
+import { TOGGLE_TORRENT_SELECTION, UPDATE_TORRENTS } from '../../Store/actions';
+
+export function selectTorrentAction(torrent) {
+  return {
+    type: TOGGLE_TORRENT_SELECTION,
+    torrent
+  };
+}
 
 export function updateTorrentAction(torrents) {
   return {
@@ -7,18 +14,24 @@ export function updateTorrentAction(torrents) {
   };
 }
 
-export function updateTorrents(torrents) {
-  return torrents || [];
+export function getFilteredTorrents(torrents, query) {
+  const normalizedQuery = query.replace(/\s+/g, '.');
+  const expr = new RegExp(`.*${normalizedQuery}.*`, 'i');
+  return torrents
+    .filter(({ name }) => expr.test(name));
 }
 
 export const mapStateToProps = (state) => {
   return {
-    torrents: state.torrents
+    torrents: getFilteredTorrents(state.torrents, state.search && state.search.query || '')
   };
 };
 
 export const mapDispatchToProps = (dispatch) => ({
   setTorrents: (torrents) => {
     dispatch(updateTorrentAction(torrents));
+  },
+  toggleTorrentSelection: (torrent) => {
+    dispatch(selectTorrentAction(torrent));
   }
 });

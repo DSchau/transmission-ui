@@ -51,7 +51,7 @@ class TorrentsContainer extends Component {
   render() {
     return (
       <div className="transmission-torrents">
-        <Torrents list={this.props.torrents} />
+        <Torrents list={this.props.torrents} onTorrentSelect={this.props.toggleTorrentSelection} />
       </div>
     );
   }

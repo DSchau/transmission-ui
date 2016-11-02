@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux'
 
 import Header from '../Header/';
+import Search from '../Search/';
 import TorrentList from '../Torrents/';
 import Footer from '../Footer/';
 
@@ -35,6 +36,7 @@ export default class App extends Component {
           <div className="transmission">
             <Header />
             <div className="transmission-content">
+              <Search />
               <TorrentList />
             </div>
             <Footer />
