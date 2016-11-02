@@ -1,53 +1,63 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Torrents from './torrents';
 
 import './torrents.css';
 
-export default class TorrentsContainer extends Component {
-  constructor(props) {
-    super(props);
+import { mapStateToProps, mapDispatchToProps } from './actions';
 
-    this.state = {
-      loading: true,
-      torrents: []
-    };
-
-    this.init();
-  }
-
-  init() {
+class TorrentsContainer extends Component {
+  componentDidMount() {
     this.getTorrents()
       .then((torrents) => {
-        this.setState({
-          loading: false,
-          torrents
-        });
+        this.props.setTorrents(torrents);
       });
   }
 
   getTorrents() {
-    return fetch('/transmission/rpc')
+    return fetch('/transmission/rpc', {
+      body: JSON.stringify({
+        'arguments': {
+            fields: [
+              'error',
+              'errorString',
+              'id',
+              'name',
+              'percentDone',
+              'sizeWhenDone',
+              'status',
+              'totalSize'
+            ]
+        },
+        method: 'torrent-get'
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    })
       .then((response) => response.json())
       .then((json) => {
         if ( json.arguments && json.arguments.torrents ) {
           return json.arguments.torrents;
         }
         return [];
-      });
-  }
-
-  handleTorrentSelect() {
-    return (selected) => {
-      console.log(selected);
-    };
+      })
+      .catch(() => []);
   }
 
   render() {
     return (
       <div className="transmission-torrents">
-        <Torrents list={this.state.torrents} onSelect={this.handleTorrentSelect()} />
+        <Torrents list={this.props.torrents} />
       </div>
     );
   }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TorrentsContainer);

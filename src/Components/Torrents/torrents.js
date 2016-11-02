@@ -6,13 +6,11 @@ import Torrent from '../Torrent/';
 
 export default class Torrents extends Component {
   static defaultProps = {
-    list: [],
-    onSelect: () => {}
+    list: []
   };
 
   static propTypes = {
-    list: PropTypes.array,
-    onSelect: PropTypes.func
+    list: PropTypes.array
   };
 
   constructor(props) {
@@ -54,6 +52,9 @@ export default class Torrents extends Component {
     );
   }
 
+  /*
+   * Dispatch torrent selected event
+   */
   handleTorrentClick(torrent, index) {
     return () => {
       const selected = this.state.selected;
@@ -63,7 +64,6 @@ export default class Torrents extends Component {
       } else {
         selected.push(torrent);
       }
-      this.props.onSelect(selected);
       this.setState({
         selected
       });

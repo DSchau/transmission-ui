@@ -19,6 +19,7 @@ body {
 .transmission-content {
   flex: 1 1 auto;
   position: relative;
+  transform: translate3d(0, 0, 0);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }

@@ -1,11 +1,3 @@
-export const SEARCH_QUERY = {
-  type: 'SEARCH_FILTER',
-  query: ''
-};
-
-export const query = (text) => {
-  return {
-    type: SEARCH_QUERY.type,
-    query: text
-  };
-};
+export const TOGGLE_DISPLAY_MODE = 'TOGGLE_DISPLAY_MODE';
+export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
+export const UPDATE_TORRENTS = 'UPDATE_TORRENTS';
