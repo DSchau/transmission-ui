@@ -8,12 +8,14 @@ import Torrent from '../Torrent/';
 export default class Torrents extends Component {
   static defaultProps = {
     list: [],
+    onTorrentAdd: () => {},
     onTorrentSelect: () => {},
     resizeDebounce: 25
   };
 
   static propTypes = {
     list: PropTypes.array,
+    onTorrentAdd: PropTypes.func,
     onTorrentSelect: PropTypes.func,
     resizeDebounce: PropTypes.number
   };
@@ -60,10 +62,10 @@ export default class Torrents extends Component {
   render() {
     const rowHeight = 50;
     return (
-      <Dropzone accept=".torrent" disableClick={true} style={{
-        width: 'auto',
-        height: 'auto'
-      }}>
+      <Dropzone accept=".torrent" style={{
+        height: 'auto',
+        width: 'auto'
+      }} disableClick={true} onDrop={(torrents) => this.props.onTorrentAdd(torrents)} >
         <List
           width={this.state.clientWidth}
           height={this.props.list.length*rowHeight}

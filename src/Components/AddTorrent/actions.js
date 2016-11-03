@@ -1,20 +1,20 @@
 import { TOGGLE_OPEN_DIALOG } from '../../Store/actions';
 
-export const openTorrentDialogAction = () => {
+export function closeDialogAction() {
   return {
     type: TOGGLE_OPEN_DIALOG,
-    openTorrent: true
-  };
-};
+    openTorrent: false
+  }
+}
 
 export const mapStateToProps = (state) => {
   return {
-    openTorrent: state.openTorrent
+    open: state.openTorrent
   };
 };
 
 export const mapDispatchToProps = (dispatch) => ({
-  openTorrentDialog: () => {
-    dispatch(openTorrentDialogAction());
+  onClose: () => {
+    dispatch(closeDialogAction());
   }
 });

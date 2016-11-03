@@ -32,6 +32,11 @@ export default function rootReducer(state = {}, action = {}) {
           focused: action.focused
         })
       });
+    case actions.TORRENT_ADD:
+      return Object.assign({}, state, {
+        torrentsToAdd: action.torrentsToAdd
+      })
+      return state;
     default:
       return state;
   }

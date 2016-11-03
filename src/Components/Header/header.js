@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Dialog from 'material-ui/Dialog';
 
 import './header.css';
 
@@ -13,14 +12,17 @@ import Remove from 'material-ui/svg-icons/action/delete';
 import Edit from 'material-ui/svg-icons/editor/mode-edit';
 
 import ActionIcon from '../ActionIcon/';
+import AddTorrent from '../AddTorrent/';
 
 export default class Header extends Component {
   static defaultProps = {
+    onClick: () => {},
     openTorrent: false
   };
 
   static propTypes = {
     closeTorrentDialog: PropTypes.func,
+    onClick: PropTypes.func,
     openTorrent: PropTypes.bool,
     openTorrentDialog: PropTypes.func
   };
@@ -39,10 +41,16 @@ export default class Header extends Component {
     };
   }
 
+  handleClick(ev) {
+    if ( ev.target.nodeName === 'HEADER' ) {
+      this.props.onClick();
+    }
+  }
+
   render() {
     return (
-      <div>
-        <Dialog open={this.props.openTorrent} onRequestClose={this.handleOpenDialogClose()} />
+      <div onClick={(ev) => this.handleClick(ev)}>
+        <AddTorrent />
         <div className="transmission-header">
           <header>
             <ActionIcon onClick={() => this.props.openTorrentDialog() }>

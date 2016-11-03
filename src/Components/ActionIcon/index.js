@@ -13,8 +13,11 @@ function handleClick(onClick) {
 
 function ActionIcon(props) {
   const { color, onClick, ...otherProps } = props;
+  const className = [
+    'action-icon'
+  ].concat(otherProps.disabled && 'disabled' : []).join(' ');
   return (
-    <div className="action-icon">
+    <div className={className}>
       <IconButton {...otherProps} >
         {
           Children.map(props.children, (child) => {
@@ -31,11 +34,13 @@ function ActionIcon(props) {
 
 ActionIcon.defaultProps = {
   color: 'white',
+  disabled: false,
   onClick: () => {}
 };
 
 ActionIcon.propTypes = {
   color: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.element.isRequired,
   onClick: PropTypes.func
 };

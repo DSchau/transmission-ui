@@ -1,10 +1,21 @@
-import { TOGGLE_TORRENT_SELECTION, UPDATE_TORRENTS } from '../../Store/actions';
+import {
+  TOGGLE_TORRENT_SELECTION,
+  TORRENT_ADD,
+  UPDATE_TORRENTS
+} from '../../Store/actions';
 
 export function selectTorrentAction(torrent) {
   return {
     type: TOGGLE_TORRENT_SELECTION,
     torrent
   };
+}
+
+export function addTorrentAction(torrents) {
+  return {
+    type: TORRENT_ADD,
+    torrentsToAdd: [].concat(torrents)
+  }
 }
 
 export function updateTorrentAction(torrents) {
@@ -28,6 +39,9 @@ export const mapStateToProps = (state) => {
 };
 
 export const mapDispatchToProps = (dispatch) => ({
+  addTorrents: (torrents) => {
+    dispatch(addTorrentAction(torrents));
+  },
   setTorrents: (torrents) => {
     dispatch(updateTorrentAction(torrents));
   },

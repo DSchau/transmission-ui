@@ -6290,3 +6290,7 @@ yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
+zenscroll:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/zenscroll/-/zenscroll-3.2.3.tgz#3cc37a4a00688a947936d1a86a1be403f4e193de"
+
