@@ -8,4 +8,14 @@
     opacity: 1;
     transform: scale(1.175);
   }
+  &.disabled {
+    svg {
+      opacity: 0.35;
+      cursor: inherit;
+    }
+    svg:hover {
+      opacity: 0.35;
+      transform: none;
+    }
+  }
 }

@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import Dialog from 'material-ui/Dialog';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 
 import TorrentIcon from 'material-ui/svg-icons/file/file-download';
 import SpeedIcon from 'material-ui/svg-icons/action/swap-horiz';
@@ -35,24 +37,27 @@ export default class Settings extends Component {
 
   render() {
     return (
-      <div className="settings">
-        <Dialog open={this.props.open} onRequestClose={this.handleClose()} bodyStyle={this.dialogStyle}>
-          <Tabs contentContainerStyle={{ paddingLeft: 5, paddingRight: 5 }}>
-            <Tab icon={<TorrentIcon />}>
-              <h3>Torrents</h3>
-            </Tab>
-            <Tab icon={<SpeedIcon />}>
-              <h3>Speed</h3>
-            </Tab>
-            <Tab icon={<PeerIcon />}>
-              <h3>Peers</h3>
-            </Tab>
-            <Tab icon={<NetworkIcon />}>
-              <h3>Network</h3>
-            </Tab>
-          </Tabs>
-        </Dialog>
-      </div>
+      <Dialog open={this.props.open} onRequestClose={this.handleClose()} contentClassName="settings" bodyStyle={this.dialogStyle}>
+        <Tabs contentContainerStyle={{ paddingLeft: 5, paddingRight: 5 }}>
+          <Tab icon={<TorrentIcon />}>
+            <h3>Downloading</h3>
+            <TextField id="download-dir" hintText="Download to..." />
+            <Checkbox label="Start when added" />
+            <Checkbox label="Append .part to incomplete file names" />
+            <h3>Seeding</h3>
+
+          </Tab>
+          <Tab icon={<SpeedIcon />}>
+            <h3>Speed</h3>
+          </Tab>
+          <Tab icon={<PeerIcon />}>
+            <h3>Peers</h3>
+          </Tab>
+          <Tab icon={<NetworkIcon />}>
+            <h3>Network</h3>
+          </Tab>
+        </Tabs>
+      </Dialog>
     );
   }
 }

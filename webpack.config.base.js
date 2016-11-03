@@ -11,21 +11,10 @@ module.exports = {
     [pkg.name]: [
       './src/index'
     ],
-    vendor: [
-      'es6-promise',
-      'whatwg-fetch',
-      'lodash',
-      'lodash.debounce',
-      'react',
-      'react-dom',
-      'react-hot-loader',
-      'react-addons-shallow-compare',
-      'react-tap-event-plugin',
-      'react-virtualized',
-      'redux',
-      'react-redux',
-      'material-ui'
-    ]
+    vendor: Object.keys(pkg.dependencies)
+      .filter((dep) => {
+        return ['normalize.css'].indexOf(dep) === -1;
+      })
   },
   output: {
     filename: '[name].js',
@@ -37,19 +26,19 @@ module.exports = {
         test: /\.js(x)?$/,
         include: [path.join(__dirname, 'src')],
         use: [
-          'react-hot/webpack',
-          'babel'
+          'react-hot-loader/webpack',
+          'babel-loader'
         ]
       },
       {
         test: /\.css$/,
         use: [
-          'style',
+          'style-loader',
           {
-            loader: 'css',
+            loader: 'css-loader',
             options: { importLoaders: 1 }
           },
-          'postcss'
+          'postcss-loader'
         ]
       }
     ]

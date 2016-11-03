@@ -15,23 +15,22 @@ module.exports = function(baseConfig, pkg) {
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style',
+            fallbackLoader: 'style-loader',
             loader: [
               {
-                loader: 'css',
+                loader: 'css-loader',
                 options: {
                   importLoaders: 1,
                   sourceMap: true
                 }
               },
-              'postcss'
+              'postcss-loader'
             ]
           })
         }
       ]
     },
     plugins: [
-      // new webpack.optimize.DedupePlugin(),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false
