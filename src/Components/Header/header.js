@@ -56,17 +56,20 @@ export default class Header extends Component {
             <ActionIcon onClick={() => this.props.openTorrentDialog() }>
               <Open />
             </ActionIcon>
-            <div className="actions">
-              <ActionIcon>
-                <Pause />
-              </ActionIcon>
-              <ActionIcon>
-                <Resume />
-              </ActionIcon>
-              <ActionIcon>
-                <Remove />
-              </ActionIcon>
-            </div>
+            {
+              this.props.edit &&
+              <div className="actions">
+                <ActionIcon>
+                  <Pause />
+                </ActionIcon>
+                <ActionIcon>
+                  <Resume />
+                </ActionIcon>
+                <ActionIcon>
+                  <Remove />
+                </ActionIcon>
+              </div>
+            }
             <ActionIcon>
               <Edit />
             </ActionIcon>

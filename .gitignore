@@ -7,6 +7,9 @@ dist/
 target/
 www/
 
+# Misc files
+sample/
+
 # OS generated files
 .DS_Store
 .DS_Store?

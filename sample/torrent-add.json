@@ -1,8 +1,0 @@
-{
-  "method": "torrent-add",
-  "arguments": {
-    "paused": false,
-    "download-dir": "/media/Movies",
-    "filename": "http://passthepopcorn.me/torrents.php?action=download&id=390082&authkey=7f59f77056b3c3a6eba88c4de2bf6db2&torrent_pass=4scrnyp5egl5viy489b5q6k8vjrozlb2"
-  }
-}
