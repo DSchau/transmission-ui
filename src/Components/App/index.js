@@ -12,7 +12,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { blue500, grey300, grey800 } from 'material-ui/styles/colors';
 
 import 'normalize.css';
-import './app.css';
+import style from './app.css';
 
 const theme = getMuiTheme({
   palette: {
@@ -41,9 +41,9 @@ export default class App extends Component {
     return (
       <Provider store={this.props.store}>
         <MuiThemeProvider muiTheme={theme}>
-          <div className="transmission">
+          <div className={style.transmission}>
             <Header onClick={() => this.handleClick()} />
-            <div ref={(node) => this.scrollEl = node } className="transmission-content">
+            <div ref={(node) => this.scrollEl = node } className={style.content}>
               <Search />
               <TorrentList />
             </div>

@@ -1,4 +1,4 @@
-.add-torrent {
+.addTorrent {
   input[type="file"] {
     cursor: pointer;
     position: absolute;

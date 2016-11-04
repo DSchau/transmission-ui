@@ -3,7 +3,7 @@ import React, { Children, Component, PropTypes } from 'react';
 import debounce from 'lodash.debounce';
 import IconButton from 'material-ui/IconButton';
 
-import './action-icon.css';
+import style from './action-icon.css';
 
 function handleClick(onClick) {
   return debounce(() => {
@@ -14,7 +14,7 @@ function handleClick(onClick) {
 function ActionIcon(props) {
   const { color, onClick, ...otherProps } = props;
   const className = [
-    'action-icon'
+    style.actionIcon
   ].concat(otherProps.disabled && 'disabled' : []).join(' ');
   return (
     <div className={className}>

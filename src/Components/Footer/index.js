@@ -8,7 +8,7 @@ import { grey900 } from 'material-ui/styles/colors';
 
 import ActionIcon from '../ActionIcon/';
 
-import './footer.css';
+import style from './footer.css';
 
 import Settings from '../Settings/';
 
@@ -20,11 +20,11 @@ class Footer extends Component {
     return (
       <span>
         <Settings open={this.props.settings} onClose={() => this.props.closeSettings() }/>
-        <footer className="transmission-footer">
+        <footer className={style.footer}>
           <ActionIcon color={grey900}>
             <SettingsIcon onClick={() => this.props.openSettings()} />
           </ActionIcon>
-          <p className="status">
+          <p className={style.status}>
             <strong>{numTorrents}</strong> <span>torrent{numTorrents === 1 ? '' : 's' }</span>
           </p>
           <ActionIcon color={grey900} onClick={() => this.props.onToggleDisplayMode(this.props.mode)}>

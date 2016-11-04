@@ -1,4 +1,4 @@
-.transmission-torrent {
+.torrent {
   padding: 0 0.25rem;
   position: relative;
   display: flex;
@@ -52,7 +52,7 @@
     max-width: 100%;
     white-space: nowrap;
   }
-  .error-message {
+  .errorMessage {
     padding: 0;
     margin: 0;
     font-size: 0.75rem;
@@ -79,11 +79,11 @@
     font-size: 0.9rem;
     font-weight: normal;
   }
-  .file-icon {
+  .fileIcon {
     padding-right: 0.5rem;
     position: relative;
   }
-  .file-extension {
+  .fileExtension {
     position: absolute;
     color: black;
     font-size: 0.5rem;
@@ -93,9 +93,4 @@
     padding: 0;
     margin: 0;
   }
-}
-
-.even .transmission-torrent .overlay {
-  background-color: rgba(255, 255, 255, 0.125);
-  background-blend-mode: overlay;
 }

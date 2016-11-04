@@ -10,7 +10,7 @@ import SpeedIcon from 'material-ui/svg-icons/action/swap-horiz';
 import PeerIcon from 'material-ui/svg-icons/social/group';
 import NetworkIcon from 'material-ui/svg-icons/social/public';
 
-import './settings.css';
+import style from './settings.css';
 
 export default class Settings extends Component {
   static defaultProps = {
@@ -37,7 +37,7 @@ export default class Settings extends Component {
 
   render() {
     return (
-      <Dialog open={this.props.open} onRequestClose={this.handleClose()} contentClassName="settings" bodyStyle={this.dialogStyle}>
+      <Dialog open={this.props.open} onRequestClose={this.handleClose()} contentClassName={style.settings} bodyStyle={this.dialogStyle}>
         <Tabs contentContainerStyle={{ paddingLeft: 5, paddingRight: 5 }}>
           <Tab icon={<TorrentIcon />}>
             <h3>Downloading</h3>
@@ -45,7 +45,6 @@ export default class Settings extends Component {
             <Checkbox label="Start when added" />
             <Checkbox label="Append .part to incomplete file names" />
             <h3>Seeding</h3>
-
           </Tab>
           <Tab icon={<SpeedIcon />}>
             <h3>Speed</h3>

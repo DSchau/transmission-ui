@@ -17,13 +17,7 @@ module.exports = function(baseConfig, pkg) {
           loader: ExtractTextPlugin.extract({
             fallbackLoader: 'style-loader',
             loader: [
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 1,
-                  sourceMap: true
-                }
-              },
+              'css-loader?modules&sourceMap&importLoaders=1',
               'postcss-loader'
             ]
           })
@@ -36,6 +30,7 @@ module.exports = function(baseConfig, pkg) {
         debug: false
       }),
       new ExtractTextPlugin({
+        allChunks: true,
         filename: 'style-[contenthash].css'
       }),
       new webpack.optimize.UglifyJsPlugin({
