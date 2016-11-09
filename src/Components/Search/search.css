@@ -16,19 +16,19 @@
     padding: 0.5rem 2rem;
     font-family: inherit;
   }
-  .search-icon, .clear-icon {
+  .searchIcon, .clearIcon {
     position: absolute !important;
     top: 50%;
     transform: translateY(-50%) !important;
   }
-  .clear-icon {
+  .clearIcon {
     right: 0;
   }
   svg {
     font-size: 1.1rem;
     color: #BDBDBD !important;
   }
-  &.focused .search-icon {
+  &.focused .searchIcon {
     color: #29B6F6 !important;
   }
 }

@@ -12,6 +12,7 @@ injectTapEventPlugin();
 
 const rootEl = document.getElementById('transmission-web-ui');
 const store = createStore(JSON.parse(localStorage.getItem('TRANSMISSION_UI')) || {
+  edit: false,
   mode: 'listview',
   openTorrent: false,
   settings: false,

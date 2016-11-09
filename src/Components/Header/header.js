@@ -70,7 +70,7 @@ export default class Header extends Component {
                 </ActionIcon>
               </div>
             }
-            <ActionIcon>
+            <ActionIcon onClick={() => this.props.toggleEdit(this.props.edit) }>
               <Edit />
             </ActionIcon>
           </header>

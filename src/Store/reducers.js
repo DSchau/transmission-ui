@@ -35,8 +35,12 @@ export default function rootReducer(state = {}, action = {}) {
     case actions.TORRENT_ADD:
       return Object.assign({}, state, {
         torrentsToAdd: action.torrentsToAdd
-      })
+      });
       return state;
+    case actions.TOGGLE_EDIT_MODE:
+      return Object.assign({}, state, {
+        edit: action.edit
+      });
     default:
       return state;
   }

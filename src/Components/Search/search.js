@@ -56,10 +56,10 @@ export default class Search extends Component {
     ].concat(this.props.search.focused && style.focused || []).join(' ');
     return (
       <div className={className} >
-        <SearchIcon className={style['search-icon']} />
+        <SearchIcon className={style.searchIcon} />
         <input type="search" ref="search" placeholder="Search for..." onBlur={() => this.props.onFocusChange(false)} onFocus={() => this.props.onFocusChange(true)} onInput={(ev) => this.updateSearchQuery(ev.target.value)} defaultValue={this.props.search.query} />
         { this.props.search.query && this.props.search.query.length &&
-          <IconButton className={style['clear-icon']} onTouchTap={(ev) => this.clearSearchQuery()}>
+          <IconButton className={style.clearIcon} onTouchTap={(ev) => this.clearSearchQuery()}>
             <ClearIcon />
           </IconButton>
         }

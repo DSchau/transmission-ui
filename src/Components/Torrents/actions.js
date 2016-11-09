@@ -27,9 +27,14 @@ export function updateTorrentAction(torrents) {
 
 export function getFilteredTorrents(torrents, query) {
   const normalizedQuery = query.replace(/\s+/g, '.');
-  const expr = new RegExp(`.*${normalizedQuery}.*`, 'i');
+  let expr; 
+  try {
+    expr = new RegExp(`.*${normalizedQuery}.*`, 'i');
+  } catch (e) {
+    expr = new RegExp(normalizedQuery.match(/([a-z0-9])/gi).join(''), 'i');
+  }
   return torrents
-    .filter(({ name }) => expr.test(name));
+    .filter(({ errorString, name }) => expr.test(name) || expr.test(errorString));
 }
 
 export const mapStateToProps = (state) => {
