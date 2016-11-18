@@ -5,6 +5,8 @@ import debounce from 'lodash.debounce';
 
 import Torrent from '../Torrent/';
 
+import style from './torrents.css';
+
 export default class Torrents extends Component {
   static defaultProps = {
     list: [],
@@ -44,17 +46,17 @@ export default class Torrents extends Component {
     });
   }
 
-  torrentRow({ key, style, index }) {
+  torrentRow({ key, style: rowStyle, index }) {
     const torrent = this.props.list[index];
-    const className = index % 2 === 0 ? 'even' : 'odd';
+    const className = index % 2 === 0 ? style.even : style.odd;
     return (
       <div
         className={className}
         key={key}
-        style={style}
+        style={rowStyle}
         onClick={() => this.props.onTorrentSelect(torrent, index)}
       >
-        <Torrent {...torrent} />
+        <Torrent selected={true} {...torrent} />
       </div>
     );
   }
@@ -62,18 +64,20 @@ export default class Torrents extends Component {
   render() {
     const rowHeight = 50;
     return (
-      <Dropzone accept=".torrent" style={{
-        height: 'auto',
-        width: 'auto'
-      }} disableClick={true} onDrop={(torrents) => this.props.onTorrentAdd(torrents)} >
-        <List
-          width={this.state.clientWidth}
-          height={this.props.list.length*rowHeight}
-          rowCount={this.props.list.length}
-          rowHeight={rowHeight}
-          rowRenderer={this.torrentRow.bind(this)}
-        />
-      </Dropzone>
+      <div className={style.transmissionTorrents}>
+        <Dropzone accept=".torrent" style={{
+          height: 'auto',
+          width: 'auto'
+        }} disableClick={true} onDrop={(torrents) => this.props.onTorrentAdd(torrents)} >
+          <List
+            width={this.state.clientWidth}
+            height={this.props.list.length*rowHeight}
+            rowCount={this.props.list.length}
+            rowHeight={this.props.selected && 75 || rowHeight}
+            rowRenderer={this.torrentRow.bind(this)}
+          />
+        </Dropzone>
+      </div>
     );
   }
 }

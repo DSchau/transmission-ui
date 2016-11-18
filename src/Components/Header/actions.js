@@ -1,4 +1,11 @@
-import { TOGGLE_OPEN_DIALOG } from '../../Store/actions';
+import { TOGGLE_EDIT_MODE, TOGGLE_OPEN_DIALOG } from '../../Store/actions';
+
+export const toggleEditModeAction = (edit) => {
+  return {
+    type: TOGGLE_EDIT_MODE,
+    edit: !edit
+  };
+};
 
 export const openTorrentDialogAction = () => {
   return {
@@ -7,14 +14,18 @@ export const openTorrentDialogAction = () => {
   };
 };
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = ({ edit, openTorrent }) => {
   return {
-    openTorrent: state.openTorrent
+    edit,
+    openTorrent
   };
 };
 
 export const mapDispatchToProps = (dispatch) => ({
   openTorrentDialog: () => {
     dispatch(openTorrentDialogAction());
+  },
+  toggleEdit: (edit) => {
+    dispatch(toggleEditModeAction(edit));
   }
 });

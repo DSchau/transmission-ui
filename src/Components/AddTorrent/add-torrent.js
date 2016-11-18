@@ -3,7 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
-import './add-torrent.css';
+import style from './add-torrent.css';
 
 export default class AddTorrent extends Component {
   static defaultProps = {
@@ -34,7 +34,7 @@ export default class AddTorrent extends Component {
       />
     ];
     return (
-      <Dialog open={this.props.open} contentClassName="add-torrent" title="Add Torrents" modal={true} actions={actions} >
+      <Dialog open={this.props.open} contentClassName={style.addTorrent} title="Add Torrents" modal={true} actions={actions} >
         <FlatButton label="Browse File(s)" labelPosition="before">
           <input className="add-torrent-file" type="file" accept=".torrent" />
         </FlatButton>

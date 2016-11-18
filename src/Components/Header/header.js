@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import './header.css';
+import style from './header.css';
 
 import IconButton from 'material-ui/IconButton';
 import { cyan500 } from 'material-ui/styles/colors';
@@ -51,14 +51,14 @@ export default class Header extends Component {
     return (
       <div onClick={(ev) => this.handleClick(ev)}>
         <AddTorrent />
-        <div className="transmission-header">
+        <div className={style.header}>
           <header>
             <ActionIcon onClick={() => this.props.openTorrentDialog() }>
               <Open />
             </ActionIcon>
             {
               this.props.edit &&
-              <div className="actions">
+              <div className={style.actions}>
                 <ActionIcon>
                   <Pause />
                 </ActionIcon>
@@ -70,7 +70,7 @@ export default class Header extends Component {
                 </ActionIcon>
               </div>
             }
-            <ActionIcon>
+            <ActionIcon onClick={() => this.props.toggleEdit(this.props.edit) }>
               <Edit />
             </ActionIcon>
           </header>

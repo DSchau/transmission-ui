@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import FileIcon from 'material-ui/svg-icons/editor/insert-drive-file';
 
-import './torrent.css';
+import style from './torrent.css';
 
 export default class Torrent extends Component {
   static propTypes = {
@@ -20,11 +20,11 @@ export default class Torrent extends Component {
 
   getClassName() {
     return [
-      this.props.percentDone === 1 ? 'complete' : '',
-      this.props.status === 4 ? 'downloading' : '',
-      this.props.status === 0 ? 'paused' : '',
-      this.props.selected ? 'selected' : '',
-      this.props.errorString ? 'error' : ''
+      this.props.percentDone === 1 ? style.complete : '',
+      this.props.status === 4 ? style.downloading : '',
+      this.props.status === 0 ? style.paused : '',
+      this.props.selected ? style.selected : '',
+      this.props.errorString ? style.error : ''
     ]
       .filter((name) => !!name);
   }
@@ -45,22 +45,25 @@ export default class Torrent extends Component {
 
   render() {
     const className = this.getClassName()
-      .concat('transmission-torrent');
+      .concat(style.torrent);
     const extension = this.getFileExtension(this.props.name);
     return (
       <div className={className.join(' ')}>
-        <div className="overlay"></div>
-        <div className="progress" style={this.getProgressStyle()}></div>
-        <div className="details">
-          <div className="flex">
-            <div className="file-icon">
-              { extension && <h3 className="file-extension">{this.props.name.slice(-3)}</h3> }
+        <div className={style.overlay}></div>
+        <div className={style.progress} style={this.getProgressStyle()}></div>
+        <div className={style.details}>
+          <div className={style.flex}>
+            <div className={style.fileIcon}>
+              { extension && <h3 className={style.fileExtension}>{this.props.name.slice(-3)}</h3> }
               <FileIcon color="rgba(255, 255, 255, 1)" style={{ height: 32, width: 32 }} />
             </div>
-            <h3 className="name">{this.props.name}</h3>
+            <h3 className={style.name}>{this.props.name}</h3>
           </div>
-          { this.props.errorString && <p className="error-message">{this.props.errorString}</p>}
+          { this.props.errorString && <p className={style.errorMessage}>{this.props.errorString}</p>}
         </div>
+        { this.props.selected &&
+          <div className={style.selected} />
+        }
       </div>
     );
   }

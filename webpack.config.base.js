@@ -11,6 +11,9 @@ module.exports = {
     [pkg.name]: [
       './src/index'
     ],
+    init: [
+      './src/init'
+    ],
     vendor: Object.keys(pkg.dependencies)
       .filter((dep) => {
         return ['normalize.css'].indexOf(dep) === -1;
@@ -36,7 +39,10 @@ module.exports = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: { importLoaders: 1 }
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
           },
           'postcss-loader'
         ]

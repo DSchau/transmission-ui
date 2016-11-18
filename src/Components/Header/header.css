@@ -1,4 +1,4 @@
-.transmission-header {
+.header {
   header {
     background-color: #37474F;
     display: flex;
@@ -7,9 +7,9 @@
     height: 54px;
     color: white;
     border-bottom: 1px solid #263238;
-  }
-  header .large {
-    font-size: 32px;
+    .large {
+      font-size: 32px;
+    }
   }
   .actions {
     display: flex;
@@ -18,7 +18,7 @@
       padding: 0 0.5rem;
     }
   }
-  .sub-header {
+  .subHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
