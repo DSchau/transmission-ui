@@ -61,6 +61,9 @@ export default class Torrent extends Component {
           </div>
           { this.props.errorString && <p className={style.errorMessage}>{this.props.errorString}</p>}
         </div>
+        { this.props.selected &&
+          <div className={style.selected} />
+        }
       </div>
     );
   }

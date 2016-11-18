@@ -1,5 +1,5 @@
 .torrent {
-  padding: 0 0.25rem;
+  padding: 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -92,5 +92,9 @@
     transform: translateY(-50%);
     padding: 0;
     margin: 0;
+  }
+  .selected {
+    display: block;
+    width: 100%;
   }
 }

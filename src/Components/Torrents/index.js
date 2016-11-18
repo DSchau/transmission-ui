@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import Torrents from './torrents';
 
-import style from './torrents.css';
-
 import { mapStateToProps, mapDispatchToProps } from './actions';
 
 class TorrentsContainer extends Component {
@@ -50,9 +48,7 @@ class TorrentsContainer extends Component {
 
   render() {
     return (
-      <div className={style.transmissionTorrents}>
-        <Torrents onTorrentAdd={this.props.addTorrents} list={this.props.torrents} onTorrentSelect={this.props.toggleTorrentSelection} />
-      </div>
+      <Torrents onTorrentAdd={this.props.addTorrents} list={this.props.torrents} onTorrentSelect={this.props.toggleTorrentSelection} />
     );
   }
 }
