@@ -3,8 +3,10 @@ const assign = require('object-assign');
 
 const DashboardPlugin = require('webpack-dashboard/plugin');
 
-module.exports = function(baseConfig, pkg) {
-  const config = {
+const pkg = require(path.resolve('./package.json'));
+
+module.exports = function(baseConfig) {
+  return assign({
     devtool: 'eval',
     entry: {
       [pkg.name]: [
@@ -16,12 +18,7 @@ module.exports = function(baseConfig, pkg) {
     plugins: [
       new DashboardPlugin()
     ]
-  };
-
-  return assign(baseConfig, {
-    devServer: require(path.resolve('./webpack-dev-server.config')),
-    devtool: config.devtool,
-    entry: assign(baseConfig.entry, config.entry),
-    plugins: baseConfig.plugins.concat(config.plugins || [])
+  }, {
+    devServer: require(path.resolve('./webpack-dev-server.config'))
   });
 };

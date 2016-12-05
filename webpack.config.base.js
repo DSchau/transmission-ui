@@ -24,7 +24,7 @@ module.exports = {
     path: path.join(__dirname, './dist/')
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js(x)?$/,
         include: [path.join(__dirname, 'src')],

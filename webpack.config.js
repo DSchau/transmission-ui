@@ -1,13 +1,15 @@
 const path = require('path');
+const assign = require('webpack-config-assign');
 
 const pkg = require(path.resolve('./package.json'));
 
-module.exports = function() {
-  let configFn;
+function getConfig(env) {
+  let config;
   try {
-    configFn = require(path.resolve(`./webpack.config.${process.env.NODE_ENV}`));
+    return require(path.resolve(`./webpack.config.${env}`));
   } catch (e) {
-    configFn = (config) => config;
+    return {};
   }
-  return configFn(require(path.resolve('./webpack.config.base')), pkg);
-};
+}
+
+module.exports = assign(require(path.resolve('./webpack.config.base')), getConfig(process.env.NODE_ENV));
