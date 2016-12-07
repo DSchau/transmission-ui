@@ -68,6 +68,7 @@
     "postcss-nested": "~1.0.0",
     "style-loader": "~0.13.1",
     "webpack": "2.1.0-beta.25",
+    "webpack-config-assign": "~1.0.0-beta",
     "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "~2.1.0-beta.9"
   },
