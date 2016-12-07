@@ -3,6 +3,7 @@
     [
       "es2015",
       {
+        "loose": true,
         "modules": false
       }
     ], "stage-0", "react"
@@ -14,13 +15,8 @@
   ],
   "env": {
     "test": {
-      "presets": [
-        "es2015"
-      ],
       "plugins": [
-        "transform-class-properties",
-        "transform-object-assign",
-        "transform-object-rest-spread"
+        "transform-es2015-modules-commonjs"
       ]
     },
     "production": {
